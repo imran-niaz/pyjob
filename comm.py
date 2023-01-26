@@ -13,7 +13,7 @@ if r.status_code == 200:
     if re.search('(SELECT|UPDATE|INSERT|DELETE)', r.text, re.IGNORECASE):
         print(f'{url} may be vulnerable to SQL injection.')
     # Check for cross-site scripting (XSS) vulnerabilities
-    if re.search('(%%%%%)', r.text, re.IGNORECASE):
+    if re.search('(<script>)', r.text, re.IGNORECASE):
         print(f'{url} may be vulnerable to cross-site scripting (XSS).')
     # Check for cross-site request forgery (CSRF) vulnerabilities
     if "csrf" in r.text.lower():
